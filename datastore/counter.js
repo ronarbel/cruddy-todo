@@ -20,8 +20,7 @@ const readCounter = (callback) => {
     if (err) {
       callback(null, 0);
     } else {
-      console.log(Number(fileData), 'fileData Before Callback')
-      console.log(counter, 'counter')
+      console.log(Number(fileData), 'fileData Before Callback');
       callback(null, Number(fileData));
     }
   });
@@ -43,10 +42,8 @@ const writeCounter = (count, callback) => {
 exports.getNextUniqueId = (callback) => {
   readCounter((err, count) => {
     counter = count + 1;
-    callback(err, zeroPaddedNumber(counter));
+    writeCounter(counter, callback);
   });
-
-  //writeCounter(counter, () => {})
 
   return zeroPaddedNumber(counter);
 };
